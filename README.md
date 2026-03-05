@@ -1,2 +1,3 @@
-# MOVIL_APP_PROYECT
-A little proyect focused to developed an app that can keep your finantial live cut edge
+# Proyecto de aplicación móvil centrada en el control de gastos
+
+Proyecto de programación móvil para el control de gastos personales, desarrollado utilizando flutter junto a dart para su desarrollo.
