@@ -30,7 +30,7 @@ class Transaccion {
       categoria: mapa['categoria'] ?? 'Otros',
       fecha: mapa['fecha_registro'] != null 
           ? DateTime.parse(mapa['fecha_registro']) 
-          : DateTime.now(), // Si no hay fecha, usa la de hoy
+          : DateTime.now(),
     );
   }
 }

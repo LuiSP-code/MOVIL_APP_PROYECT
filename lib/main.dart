@@ -26,7 +26,7 @@ class SistemaPresupuesto extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        textTheme: GoogleFonts.lexendTextTheme(), // Tipografía moderna y legible
+        textTheme: GoogleFonts.lexendTextTheme(), 
       ),
       home: const PantallaPrincipal(),
     );
