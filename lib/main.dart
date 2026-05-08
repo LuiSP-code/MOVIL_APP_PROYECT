@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'configuracion/supabase_config.dart';
+import 'pantallas/inicio_pantalla.dart';
+import 'pantallas/historial_pantalla.dart';
+import 'pantallas/estadisticas_pantalla.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,8 +36,21 @@ class SistemaPresupuesto extends StatelessWidget {
   }
 }
 
-class PantallaPrincipal extends StatelessWidget {
+class PantallaPrincipal extends StatefulWidget {
   const PantallaPrincipal({super.key});
+
+  @override
+  State<PantallaPrincipal> createState() => _PantallaPrincipalState();
+}
+
+class _PantallaPrincipalState extends State<PantallaPrincipal> {
+  int _indiceSeleccionado = 0;
+
+  final List<Widget> _pantallas = [
+    const InicioPantalla(),
+    const HistorialPantalla(),
+    const EstadisticasPantalla(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -43,29 +59,16 @@ class PantallaPrincipal extends StatelessWidget {
         title: const Text("Gestión de Presupuesto"),
         elevation: 2,
       ),
-      body: Container(
-        padding: const EdgeInsets.all(24),
-        width: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.account_balance_wallet, size: 80, color: Colors.indigo),
-            const SizedBox(height: 24),
-            Text(
-              "Módulo de Finanzas Inicializado",
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 12),
-            const Text(
-              "Arquitectura base y conexión a servicios de datos activa.",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey),
-            ),
-          ],
-        ),
+      body: _pantallas[_indiceSeleccionado],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _indiceSeleccionado,
+        onTap: (indice) => setState(() => _indiceSeleccionado = indice),
+        selectedItemColor: Colors.indigo,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.add_circle), label: "Añadir"),
+          BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: "Historial"),
+          BottomNavigationBarItem(icon: Icon(Icons.pie_chart), label: "Estadísticas"),
+        ],
       ),
     );
   }
