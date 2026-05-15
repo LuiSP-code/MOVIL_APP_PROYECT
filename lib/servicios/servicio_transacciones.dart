@@ -1,5 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../lib/modelos/transaccion.dart';
+import '../modelos/transaccion.dart';
 
 
 class ServicioTransacciones {
