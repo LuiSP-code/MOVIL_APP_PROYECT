@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:finantial_app/configuracion/supabase_config.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-class ListScreen extends StatefulWidget {
-  const ListScreen({super.key});
+class HistorialPantalla extends StatefulWidget {
+  const HistorialPantalla({super.key});
 
   @override
-  State<ListScreen> createState() => _ListScreenState();
+  State<HistorialPantalla> createState() => _HistorialPantallaState();
 }
 // VENTANA: HISTORIAL DE GASTOS
-class _ListScreenState extends State<ListScreen> {
+class _HistorialPantallaState extends State<HistorialPantalla> {
   final supabase = Supabase.instance.client;
 
   // ICONOS PARA LAS CATEGORÍAS
