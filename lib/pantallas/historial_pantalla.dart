@@ -31,3 +31,22 @@ class _HistorialPantallaState extends State<HistorialPantalla> {
         return Icons.attach_money;
     }
   }
+  // VENTANA PARA EL HISTORIAL DE GASTOS
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Historial de Gastos")),
+      body: FutureBuilder<List<Map<String, dynamic>>>(
+        future: supabase.from('Transacciones').select().order('created_at'),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          final transacciones = snapshot.data!;
+          if (transacciones.isEmpty) {
+            return const Center(child: Text("No hay gastos registrados"));
+          }
+          return ListView.builder(
+            itemCount: transacciones.length,
+            itemBuilder: (context, index) {
+              final item = transacciones[index];
